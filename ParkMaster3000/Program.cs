@@ -9,4 +9,12 @@ namespace ParkMaster3000
             Console.WriteLine("Hello World!");
         }
     }
+
+    public class ParkMaster {
+        public ParkMaster()
+        {
+
+        }
+        }
+
 }
