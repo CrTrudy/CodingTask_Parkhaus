@@ -1,0 +1,15 @@
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\bin\Debug\net7.0\ParkMaster.exe
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\bin\Debug\net7.0\ParkMaster.deps.json
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\bin\Debug\net7.0\ParkMaster.runtimeconfig.json
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\bin\Debug\net7.0\ParkMaster.dll
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\bin\Debug\net7.0\ParkMaster.pdb
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.csproj.AssemblyReference.cache
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.AssemblyInfoInputs.cache
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.AssemblyInfo.cs
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.csproj.CoreCompileInputs.cache
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.dll
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\refint\ParkMaster.dll
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.pdb
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ParkMaster.genruntimeconfig.cache
+D:\GitHub\CodingTask_Parkhaus\ParkMaster\obj\Debug\net7.0\ref\ParkMaster.dll
