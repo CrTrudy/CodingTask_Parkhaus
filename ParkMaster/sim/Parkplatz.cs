@@ -1,6 +1,6 @@
-﻿using static ParkMaster3000.ParkMaster;
+﻿using static ParkMaster.ParkhausSimulator;
 
-namespace ParkMaster3000
+namespace ParkMaster
 {
     public class Parkplatz
     {
@@ -18,23 +18,23 @@ namespace ParkMaster3000
 
 
         FahrzeugType _fahrzeugType;
-        public FahrzeugType FahrzeugType
+        public FahrzeugType Type
         {
             get { return _fahrzeugType; }
         }
 
-        Fahrzeug _fahrzeug;
-        public Fahrzeug Fahrzeug
+        Fahrzeug? _fahrzeug;
+        public Fahrzeug? Fahrzeug
         {
             get { return _fahrzeug; }
             set { _fahrzeug = value; }
         }
 
-        public Parkplatz(char deckName, int platzNr, FahrzeugType fahrzeugtype)
+        public Parkplatz(char deckName, int platzNr, FahrzeugType fahrzeugType)
         {
             _deckName = deckName;
             _platzNr = platzNr;
-            _fahrzeugType = fahrzeugtype;
+            _fahrzeugType = fahrzeugType;
         }
 
 

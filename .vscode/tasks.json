@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ParkMaster3000/ParkMaster3000.csproj",
+                "${workspaceFolder}/ParkMaster/ParkMaster.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/ParkMaster3000/ParkMaster3000.csproj",
+                "${workspaceFolder}/ParkMaster/ParkMaster.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/ParkMaster3000/ParkMaster3000.csproj"
+                "${workspaceFolder}/ParkMaster/ParkMaster.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

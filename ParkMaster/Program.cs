@@ -1,4 +1,4 @@
-﻿namespace ParkMaster3000
+﻿namespace ParkMaster
 {
     class Program
     {

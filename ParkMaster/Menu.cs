@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ParkMaster3000
+namespace ParkMaster
 {
     public class Menu
     {
         string _titel;
         string[] _optionen;
         int _auswahlIndex = 0;
-        int _cursorOffsetLinks = 35;
-        int _cursorOffsetOben = 14;
+        //int _cursorOffsetLinks = 35;
+        //int _cursorOffsetOben = 14;
 
         public Menu(string titel, string[] optionen)
         {
@@ -39,27 +39,8 @@ namespace ParkMaster3000
                 Console.WriteLine();
             }
         }
+        void SimulationAnzeigen(){
 
-        void EingabeOptionen()
-        {
-            for (int i = 0; i < _optionen.Length; i++)
-            {
-                string aktuelleOption = _optionen[i];
-                if (i == _auswahlIndex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.White;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.BackgroundColor = ConsoleColor.Black;
-                }
-                //Console.SetCursorPosition(_cursorOffsetLinks, _cursorOffsetOben + i);
-                Console.Write($"<< {aktuelleOption} >>");
-                Console.ResetColor();
-                Console.WriteLine();
-            }
         }
         public int Run()
         {

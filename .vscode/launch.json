@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         
         {
             // Use IntelliSense to find out which attributes exist for C# debugging
@@ -11,9 +12,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ParkMaster3000/bin/Debug/net5.0/ParkMaster3000.dll",
+            "program": "${workspaceFolder}/ParkMaster/bin/Debug/net7.0/ParkMaster.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/ParkMaster3000",
+            "cwd": "${workspaceFolder}/ParkMaster",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
