@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\CodingTask_Parkhaus\\ParkMaster\\ParkMaster.csproj",
-      "projectName": "ParkMaster",
-      "projectPath": "D:\\GitHub\\CodingTask_Parkhaus\\ParkMaster\\ParkMaster.csproj",
+      "projectUniqueName": "D:\\GitHub\\CodingTask_Parkhaus\\parkmaster\\parkmaster.csproj",
+      "projectName": "parkmaster",
+      "projectPath": "D:\\GitHub\\CodingTask_Parkhaus\\parkmaster\\parkmaster.csproj",
       "packagesPath": "C:\\Users\\MainWin\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\CodingTask_Parkhaus\\ParkMaster\\obj\\",
+      "outputPath": "D:\\GitHub\\CodingTask_Parkhaus\\parkmaster\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MainWin\\AppData\\Roaming\\NuGet\\NuGet.Config"

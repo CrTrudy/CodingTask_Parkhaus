@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JkANhbVckdLZizdxWAZYVBzrOMc3OWVFbUm5E3EIx44coyGygalB0u/5IQnZ5P5Jt16AX1Nk01yUdaGskNvqpQ==",
+  "dgSpecHash": "uVKg//emfy/xGldoS6uBgdDhamm2uh0PNCf1G4GJb18ny43zjMlDIGuPcYwTuXyWhQ1tTCDXw0Rbstib69qojg==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\CodingTask_Parkhaus\\ParkMaster\\ParkMaster.csproj",
+  "projectFilePath": "D:\\GitHub\\CodingTask_Parkhaus\\parkmaster\\parkmaster.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
