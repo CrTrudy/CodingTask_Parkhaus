@@ -1,23 +1,24 @@
-﻿using static ParkMaster.ParkhausSimulator;
+﻿
+using static ParkMaster.ParkhausSimulator;
 
 namespace ParkMaster
 {
     public class Fahrzeug
     {
-        FahrzeugType _type;
+        bool _auto;
         string _kennzeichen;
-        public FahrzeugType Type
+        public bool Auto
         {
-            get { return _type; }
+            get { return _auto; }
         }
         public string Kennzeichen
         {
             get { return _kennzeichen; }
         }
 
-        public Fahrzeug(FahrzeugType type, string kennzeichen)
+        public Fahrzeug(bool auto, string kennzeichen)
         {
-            _type = type;
+            _auto = auto;
             _kennzeichen = kennzeichen;
         }
     }

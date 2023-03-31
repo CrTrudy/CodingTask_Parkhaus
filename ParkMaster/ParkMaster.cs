@@ -7,7 +7,6 @@ namespace ParkMaster
         ParkhausSimulator _sim = new ParkhausSimulator();
         Nutzer _nutzer;
         Random _rand = new Random();
-        Menu? _menu;
         string _titel = "ParkMaster3000";
 
         public ParkMaster()
@@ -19,10 +18,11 @@ namespace ParkMaster
 
 
         void Bearbeiten() {
-            string[] _optionen = { "Bearbeiten", "Simulation","Beenden"};
-            _menu = new Menu(_titel, _optionen);
+            Menu menu;
+            string[] optionen = { "Bearbeiten", "Simulation","Beenden"};
+            menu = new Menu(_titel, optionen);
 
-            int _auswahlIndex = _menu.Run();
+            int _auswahlIndex = menu.Run();
 
             Console.CursorVisible = false;
             if(_auswahlIndex == 0)
@@ -39,15 +39,17 @@ namespace ParkMaster
 
         void Simulation()
         {
-            ConsoleKey key;
-            
+            ConsoleKeyInfo key;
+            List<Fahrzeug> fahrzeuge = _sim.FahrzeugeErstellen(_nutzer.Parkhaus.AlleParkstellen.Count);
             do{
+                ParkstellenAnzeigen();
+
+                _nutzer.Parkhaus.Registrierung(fahrzeuge[_rand.Next(fahrzeuge.Count)]);
 
 
-
-
-                key = Console.ReadKey().Key;
-            } while(key != ConsoleKey.Enter);
+                key = Console.ReadKey(); 
+                Thread.Sleep(_rand.Next(4000));
+            } while(key.Key != null);
 
             Bearbeiten();
         }
@@ -55,7 +57,7 @@ namespace ParkMaster
         
         void ParkstellenAnzeigen(){
             char deck = (char) 65;
-            foreach (var stelle in _nutzer.Parkhaus.Parkstelle)
+            foreach (var stelle in _nutzer.Parkhaus.AlleParkstellen)
             {
                 if (stelle.DeckName != deck)
                     Console.WriteLine(); 

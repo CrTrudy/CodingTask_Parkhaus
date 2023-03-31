@@ -1,4 +1,6 @@
-﻿using static ParkMaster.ParkhausSimulator;
+﻿
+
+using static ParkMaster.ParkhausSimulator;
 
 namespace ParkMaster
 {
@@ -17,10 +19,10 @@ namespace ParkMaster
         }
 
 
-        FahrzeugType _fahrzeugType;
-        public FahrzeugType Type
+        bool _autoStellplatz;
+        public bool AutoStellplatz
         {
-            get { return _fahrzeugType; }
+            get { return _autoStellplatz; }
         }
 
         Fahrzeug? _fahrzeug;
@@ -30,11 +32,11 @@ namespace ParkMaster
             set { _fahrzeug = value; }
         }
 
-        public Parkplatz(char deckName, int platzNr, FahrzeugType fahrzeugType)
+        public Parkplatz(char deckName, int platzNr, bool autoStellplatz)
         {
             _deckName = deckName;
             _platzNr = platzNr;
-            _fahrzeugType = fahrzeugType;
+            _autoStellplatz = autoStellplatz;
         }
 
 

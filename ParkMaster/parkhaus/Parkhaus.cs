@@ -20,20 +20,20 @@ namespace ParkMaster
         }
 
         //alle Parkplätze
-        List<Parkplatz> _parkstelle;
-        public List<Parkplatz> Parkstelle
+        List<Parkplatz> _alleparkstellen;
+        public List<Parkplatz> AlleParkstellen
         {
-            get { return _parkstelle; }
+            get { return _alleparkstellen; }
         }
 
         //Freie Auto Parkplätze
-        public List<Parkplatz> AutoParkstellen
+        public List<Parkplatz> FreieParkstellenAuto
         {
-            get { List<Parkplatz> aStellen = new List<Parkplatz>();
-                foreach (Parkplatz stelle in _parkstelle)
-                    if (stelle.Type == ParkhausSimulator.FahrzeugType.Auto)
-                        aStellen.Add(stelle);
-                return aStellen;
+            get { List<Parkplatz> platz = new List<Parkplatz>();
+                foreach (Parkplatz parkplatz in _alleparkstellen)
+                    if (parkplatz.AutoStellplatz && parkplatz.Fahrzeug == null)
+                        platz.Add(parkplatz);
+                return platz;
             }
         }
 
@@ -44,24 +44,21 @@ namespace ParkMaster
         {
             get
             {
-                List<Parkplatz> mStellen = new List<Parkplatz>();
-                foreach (Parkplatz stelle in _parkstelle)
-                    if (stelle.Type == FahrzeugType.Motorrad)
-                        mStellen.Add(stelle);
-                foreach (Parkplatz stelle in _parkstelle)
-                    if (stelle.Type == FahrzeugType.Auto)
-                        mStellen.Add(stelle);
-                return mStellen;
+                List<Parkplatz> platz = new List<Parkplatz>();
+                foreach (Parkplatz parkplsatz in _alleparkstellen)
+                    if (parkplsatz.AutoStellplatz && parkplsatz.Fahrzeug == null)
+                        platz.Add(parkplsatz);
+                return platz;
             }
         }
 
 
 
 
-        public Parkhaus(string name, List<Parkplatz> parkstelle)
+        public Parkhaus(string name, List<Parkplatz> parkstellen)
         {
             _name = name;
-            _parkstelle = parkstelle;
+            _alleparkstellen = parkstellen;
         }
 
 
@@ -70,24 +67,26 @@ namespace ParkMaster
         public string Registrierung(Fahrzeug fahrzeug)
         {
             Parkplatz? platz = SucheKennzeichen(fahrzeug.Kennzeichen);
+
             if (platz != null)
                 {
-                Ausparken(platz);
-                return $"{fahrzeug.Kennzeichen} hat das Parkhaus verlassen";
+                    Ausparken(platz);
+                    return $"{fahrzeug.Kennzeichen} hat das Parkhaus verlassen";
                 }
-            if (fahrzeug.Type == FahrzeugType.Auto)
+            if (FreieParkstellenAuto.Count > 0 && fahrzeug.Auto)
                 {
-                platz = AutoEinparken(fahrzeug);
-                return $"Bitte nehmen Sie den Platz Nr{platz.PlatzNr} auf Parkdeck {platz.DeckName}";
+                    platz = FreieParkstellenAuto[0];
+                    AutoEinparken(fahrzeug);
+                    return $"Bitte nehmen Sie den Platz Nr{platz.PlatzNr} auf Parkdeck {platz.DeckName}";
                 }
-            platz = MotorradEinparken(fahrzeug);
+            MotorradEinparken(fahrzeug);
             return $"{platz.PlatzNr} {platz.DeckName}";
         }
 
 
         public Parkplatz? SucheKennzeichen(string kennzeichen)
         {
-            foreach (Parkplatz platz in _parkstelle)
+            foreach (Parkplatz platz in _alleparkstellen)
             {
                 if( platz.Fahrzeug != null)
                     if (kennzeichen == platz.Fahrzeug.Kennzeichen)
@@ -96,9 +95,9 @@ namespace ParkMaster
             return null;
         }
 
-        void Ausparken(Parkplatz? parkplatz)
+        void Ausparken(Parkplatz parkplatz)
         {
-            foreach (Parkplatz stelle in _parkstelle)
+            foreach (Parkplatz stelle in _alleparkstellen)
             {
                 if (stelle == parkplatz)
                 {
@@ -107,30 +106,28 @@ namespace ParkMaster
             }
         }
 
-        Parkplatz? AutoEinparken(Fahrzeug fahrzeug)
+        void AutoEinparken(Fahrzeug fahrzeug)
         {
-            foreach (Parkplatz stelle in _parkstelle)
+            foreach (Parkplatz stelle in _alleparkstellen)
             {
-                if (stelle == AutoParkstellen[0])
+                if (stelle == FreieParkstellenAuto[0])
                 {
                     stelle.Fahrzeug = fahrzeug;
-                    return stelle;
                 }
             }
-            return null;
         }
 
-        Parkplatz? MotorradEinparken(Fahrzeug fahrzeug)
+        void MotorradEinparken(Fahrzeug fahrzeug)
         {
-            foreach (Parkplatz stelle in _parkstelle)
+            foreach (Parkplatz stelle in _alleparkstellen)
             {
-                if (stelle == MotorradParkstellen[0])
+                if (MotorradParkstellen.Count > 0 && stelle == MotorradParkstellen[0])
                 {
                     stelle.Fahrzeug = fahrzeug;
-                    return stelle;
                 }
+                if(stelle == FreieParkstellenAuto[0])
+                    stelle.Fahrzeug = fahrzeug;
             }
-            return null;
         }
 
     }

@@ -2,32 +2,29 @@ namespace ParkMaster
 {
     partial class ParkhausSimulator
     {
-        public enum FahrzeugType
-        {
-            Auto,
-            Motorrad
-        }
+
         Random _rand = new Random();
 
     public Parkhaus ParkhausAnlegen()
-        {
-            string name;
-            int decks;
-            List<Parkplatz> platz;
-            
+    {
+        string name;
+        int decks;
+        List<Parkplatz> platz;
+        do{
             Console.Write("Parkhaus Name: ");
             name = Console.ReadLine();
+        } while(string.IsNullOrEmpty(name));
 
-            
-            decks = NurInt("Anzahl Parkdecks: ");
-            platz = ParkstellenEingeben(decks);
-            
-            return new Parkhaus(name, platz);
-        }
-        List<Parkplatz> ParkstellenEingeben(int decks)
+        
+        decks = NurInt("Anzahl Parkdecks: ");
+        platz = ParkstellenEingeben(decks);
+        
+        return new Parkhaus(name, platz);
+    }
+    List<Parkplatz> ParkstellenEingeben(int decks)
     {
-        List<int> autoStellen = new List<int>();
-        List<int> motorradStellen = new List<int>();
+        List<int> parkplaetzAuto = new List<int>();
+        List<int> parkplaetzeMotorrad = new List<int>();
         int auto;
         int motorrad;
     
@@ -37,21 +34,22 @@ namespace ParkMaster
                 auto = NurInt($"Anzahl der Auto Parkstellen auf deck {a}: ");
                 motorrad = NurInt($"Anzahl der Motorrad Parkstellen auf deck {a}: ");
 
-                autoStellen.Add(auto);
-                motorradStellen.Add(motorrad);
+                parkplaetzAuto.Add(auto);
+                parkplaetzeMotorrad.Add(motorrad);
             }
-        return ParkplatzAnlegen(autoStellen, motorradStellen);
+        return ParkplatzAnlegen(parkplaetzAuto, parkplaetzeMotorrad);
     }
     public List<Fahrzeug> FahrzeugeErstellen(int parkstellen)
         {
             List<Fahrzeug> fahrzeuge = new List<Fahrzeug>();
             string kennzeichen;
-            FahrzeugType zufallsType;
+            bool zufallsType = true;
 
             for (int kfz = 0; kfz < parkstellen + 3; kfz++)
             {
-                FahrzeugType[] alleFahrzeugtypen = (FahrzeugType[])Enum.GetValues(typeof(FahrzeugType));
-                zufallsType = alleFahrzeugtypen[_rand.Next(0, alleFahrzeugtypen.Length)];
+                zufallsType = true;
+                if(_rand.Next(4) < 2)
+                    zufallsType = false;
 
                 Landkreis[] alleKreise = (Landkreis[])Enum.GetValues(typeof(Landkreis));
                 Landkreis zufallsKreis = alleKreise[_rand.Next(0, alleKreise.Length)];
@@ -67,39 +65,39 @@ namespace ParkMaster
             }
             return fahrzeuge;
         }
-    
-    List<Parkplatz> ParkplatzAnlegen(List<int> auto, List<int> motorrad) {
-        List<Parkplatz> platz = new List<Parkplatz>();
-        Parkplatz parkplatz;
-        for (var deck = 0; deck < auto.Count; deck++)
-        {
-            char deckName = (char) (deck + 65);
 
-            for (int i = 0; i < auto[deck]; i++)
+        List<Parkplatz> ParkplatzAnlegen(List<int> auto, List<int> motorrad) {
+            List<Parkplatz> platz = new List<Parkplatz>();
+            Parkplatz parkplatz;
+            for (var deck = 0; deck < auto.Count; deck++)
             {
-                parkplatz = new Parkplatz(deckName, i, FahrzeugType.Auto);
-                platz.Add(parkplatz);
+                char deckName = (char) (deck + 65);
+
+                for (int i = 0; i < auto[deck]; i++)
+                {
+                    parkplatz = new Parkplatz(deckName, i, true);
+                    platz.Add(parkplatz);
+                }
+                for (int i = 0; i < motorrad[deck]; i++)
+                {
+                    parkplatz = new Parkplatz(deckName, i, false);
+                    platz.Add(parkplatz);
+                }
             }
-            for (int i = 0; i < motorrad[deck]; i++)
-            {
-                parkplatz = new Parkplatz(deckName, i, FahrzeugType.Motorrad);
-                platz.Add(parkplatz);
-            }
+            return platz;
         }
-        return platz;
-    }
 
-    int NurInt(string frage)
-    {
-        int zahl;
-        string eingabe;
-        do
-            {
-                Console.Write(frage);
-                eingabe = Console.ReadLine();
-            } while (!int.TryParse(eingabe, out zahl));
-        return zahl;
-    }
+        int NurInt(string frage)
+        {
+            int zahl;
+            string eingabe;
+            do
+                {
+                    Console.Write(frage);
+                    eingabe = Console.ReadLine();
+                } while (!int.TryParse(eingabe, out zahl));
+            return zahl;
+        }
     }
     
 }
