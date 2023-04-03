@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ParkMaster
+﻿namespace ParkMaster
 {
     public class ParkMaster {
         ParkhausSimulator _sim = new ParkhausSimulator();
@@ -22,7 +19,7 @@ namespace ParkMaster
             string[] optionen = { "Bearbeiten", "Simulation","Beenden"};
             menu = new Menu(_titel, optionen);
 
-            int _auswahlIndex = menu.Run();
+            int _auswahlIndex = menu.Start();
 
             Console.CursorVisible = false;
             if(_auswahlIndex == 0)
@@ -39,19 +36,18 @@ namespace ParkMaster
 
         void Simulation()
         {
-            ConsoleKeyInfo key;
             List<Fahrzeug> fahrzeuge = _sim.FahrzeugeErstellen(_nutzer.Parkhaus.AlleParkstellen.Count);
             do{
                 ParkstellenAnzeigen();
+                
+                System.Console.WriteLine(_nutzer.Parkhaus.Registrierung(fahrzeuge[_rand.Next(fahrzeuge.Count)]));
 
-                _nutzer.Parkhaus.Registrierung(fahrzeuge[_rand.Next(fahrzeuge.Count)]);
 
-
-                key = Console.ReadKey(); 
-                Thread.Sleep(_rand.Next(4000));
-            } while(key.Key != null);
-
-            Bearbeiten();
+                Thread.Sleep(_rand.Next(4000));                
+            }
+            while (!Console.KeyAvailable);
+        //Bearbeiten();
+        
         }
         //Anzahl der erzeugten Fahrzeuge abhängig von Parkhaus größe
         
@@ -61,7 +57,7 @@ namespace ParkMaster
             {
                 if (stelle.DeckName != deck)
                     Console.WriteLine(); 
-                if(stelle.Fahrzeug != null)                   
+                if(stelle.Fahrzeug is not null)                   
                     Console.Write($" {stelle.DeckName} {stelle.PlatzNr} {stelle.Fahrzeug.Kennzeichen}    ");
                 Console.Write($" {stelle.DeckName} {stelle.PlatzNr}             ");
                 deck = stelle.DeckName;

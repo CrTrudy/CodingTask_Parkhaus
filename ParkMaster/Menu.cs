@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace ParkMaster
 {
     public class Menu
@@ -8,8 +6,6 @@ namespace ParkMaster
         string _titel;
         string[] _optionen;
         int _auswahlIndex = 0;
-        //int _cursorOffsetLinks = 35;
-        //int _cursorOffsetOben = 14;
 
         public Menu(string titel, string[] optionen)
         {
@@ -42,7 +38,7 @@ namespace ParkMaster
         void SimulationAnzeigen(){
 
         }
-        public int Run()
+        public int Start()
         {
             Console.WriteLine(_titel + "\n\n\n");
             ConsoleKey keyPressed;

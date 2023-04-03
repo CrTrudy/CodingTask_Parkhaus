@@ -2,24 +2,21 @@ namespace ParkMaster
 {
     partial class ParkhausSimulator
     {
-
-        Random _rand = new Random();
-
     public Parkhaus ParkhausAnlegen()
     {
         string name;
         int decks;
-        List<Parkplatz> platz;
+        List<Parkplatz> parkstellen;
         do{
             Console.Write("Parkhaus Name: ");
             name = Console.ReadLine();
-        } while(string.IsNullOrEmpty(name));
+        } while(name is null);
 
         
-        decks = NurInt("Anzahl Parkdecks: ");
-        platz = ParkstellenEingeben(decks);
+        decks = InputZahl("Anzahl Parkdecks: ");
+        parkstellen = ParkstellenEingeben(decks);
         
-        return new Parkhaus(name, platz);
+        return new Parkhaus(name, parkstellen);
     }
     List<Parkplatz> ParkstellenEingeben(int decks)
     {
@@ -31,8 +28,8 @@ namespace ParkMaster
         for (int deck = 0; deck < decks; deck++)
             {
                 char a = (char) (deck + 65);
-                auto = NurInt($"Anzahl der Auto Parkstellen auf deck {a}: ");
-                motorrad = NurInt($"Anzahl der Motorrad Parkstellen auf deck {a}: ");
+                auto = InputZahl($"Anzahl der Auto Parkstellen auf deck {a}: ");
+                motorrad = InputZahl($"Anzahl der Motorrad Parkstellen auf deck {a}: ");
 
                 parkplaetzAuto.Add(auto);
                 parkplaetzeMotorrad.Add(motorrad);
@@ -41,6 +38,7 @@ namespace ParkMaster
     }
     public List<Fahrzeug> FahrzeugeErstellen(int parkstellen)
         {
+            Random _rand = new Random();
             List<Fahrzeug> fahrzeuge = new List<Fahrzeug>();
             string kennzeichen;
             bool zufallsType = true;
@@ -62,12 +60,12 @@ namespace ParkMaster
 
                 fahrzeuge.Add(new Fahrzeug(zufallsType, kennzeichen));
                 System.Console.WriteLine(kennzeichen);
+                Thread.Sleep(5000);
             }
             return fahrzeuge;
         }
-
         List<Parkplatz> ParkplatzAnlegen(List<int> auto, List<int> motorrad) {
-            List<Parkplatz> platz = new List<Parkplatz>();
+            List<Parkplatz> ParkStellen = new List<Parkplatz>();
             Parkplatz parkplatz;
             for (var deck = 0; deck < auto.Count; deck++)
             {
@@ -76,18 +74,20 @@ namespace ParkMaster
                 for (int i = 0; i < auto[deck]; i++)
                 {
                     parkplatz = new Parkplatz(deckName, i, true);
-                    platz.Add(parkplatz);
+                    ParkStellen.Add(parkplatz);
                 }
                 for (int i = 0; i < motorrad[deck]; i++)
                 {
                     parkplatz = new Parkplatz(deckName, i, false);
-                    platz.Add(parkplatz);
+                    ParkStellen.Add(parkplatz);
                 }
             }
-            return platz;
+            return ParkStellen;
         }
 
-        int NurInt(string frage)
+
+        //wiederholt readline wenn eingabe nicht int
+        int InputZahl(string frage)
         {
             int zahl;
             string eingabe;
@@ -101,4 +101,3 @@ namespace ParkMaster
     }
     
 }
-

@@ -1,8 +1,4 @@
-﻿
-
-using static ParkMaster.ParkhausSimulator;
-
-namespace ParkMaster
+﻿namespace ParkMaster
 {
     public class Parkplatz
     {
