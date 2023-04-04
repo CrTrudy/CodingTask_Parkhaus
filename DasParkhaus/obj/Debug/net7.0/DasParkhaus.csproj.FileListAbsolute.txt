@@ -1,0 +1,15 @@
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.csproj.AssemblyReference.cache
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.GeneratedMSBuildEditorConfig.editorconfig
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.AssemblyInfoInputs.cache
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.AssemblyInfo.cs
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.csproj.CoreCompileInputs.cache
+D:\DokumenteIBB\c#\DasParkhaus\bin\Debug\net7.0\DasParkhaus.exe
+D:\DokumenteIBB\c#\DasParkhaus\bin\Debug\net7.0\DasParkhaus.deps.json
+D:\DokumenteIBB\c#\DasParkhaus\bin\Debug\net7.0\DasParkhaus.runtimeconfig.json
+D:\DokumenteIBB\c#\DasParkhaus\bin\Debug\net7.0\DasParkhaus.dll
+D:\DokumenteIBB\c#\DasParkhaus\bin\Debug\net7.0\DasParkhaus.pdb
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.dll
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\refint\DasParkhaus.dll
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.pdb
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\DasParkhaus.genruntimeconfig.cache
+D:\DokumenteIBB\c#\DasParkhaus\obj\Debug\net7.0\ref\DasParkhaus.dll
