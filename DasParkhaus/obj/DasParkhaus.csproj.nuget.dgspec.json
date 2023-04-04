@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DokumenteIBB\\C#\\DasParkhaus\\DasParkhaus.csproj": {}
+    "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\DasParkhaus.csproj": {}
   },
   "projects": {
-    "D:\\DokumenteIBB\\C#\\DasParkhaus\\DasParkhaus.csproj": {
+    "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\DasParkhaus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DokumenteIBB\\C#\\DasParkhaus\\DasParkhaus.csproj",
+        "projectUniqueName": "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\DasParkhaus.csproj",
         "projectName": "DasParkhaus",
-        "projectPath": "D:\\DokumenteIBB\\C#\\DasParkhaus\\DasParkhaus.csproj",
+        "projectPath": "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\DasParkhaus.csproj",
         "packagesPath": "C:\\Users\\MainWin\\.nuget\\packages\\",
-        "outputPath": "D:\\DokumenteIBB\\C#\\DasParkhaus\\obj\\",
+        "outputPath": "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MainWin\\AppData\\Roaming\\NuGet\\NuGet.Config"

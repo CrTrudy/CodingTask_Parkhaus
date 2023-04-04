@@ -13,9 +13,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ParkMaster/bin/Debug/net7.0/ParkMaster.dll",
+            "program": "${workspaceFolder}/DasParkhaus/bin/Debug/net7.0/DasParkhaus.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/ParkMaster",
+            "cwd": "${workspaceFolder}/DasParkhaus",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

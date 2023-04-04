@@ -11,7 +11,17 @@
     {
         get { return _platzNr; }
     }
+    public bool Frei {
+        get { 
+            if(_fahrzeug is null)
+            {
+                return true; 
+            }
+            return false;
+        }
 
+        set { value = !value; }
+    }
 
     FahrzeugType _fahrzeugType;
     public FahrzeugType Type

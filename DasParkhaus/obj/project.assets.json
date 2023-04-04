@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DokumenteIBB\\c#\\DasParkhaus\\DasParkhaus.csproj",
+      "projectUniqueName": "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\DasParkhaus.csproj",
       "projectName": "DasParkhaus",
-      "projectPath": "D:\\DokumenteIBB\\c#\\DasParkhaus\\DasParkhaus.csproj",
+      "projectPath": "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\DasParkhaus.csproj",
       "packagesPath": "C:\\Users\\MainWin\\.nuget\\packages\\",
-      "outputPath": "D:\\DokumenteIBB\\c#\\DasParkhaus\\obj\\",
+      "outputPath": "D:\\GitHub\\CodingTask_Parkhaus\\DasParkhaus\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MainWin\\AppData\\Roaming\\NuGet\\NuGet.Config"

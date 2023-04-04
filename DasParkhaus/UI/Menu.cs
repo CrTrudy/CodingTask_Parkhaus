@@ -1,18 +1,20 @@
 ﻿public class Menu
     {
         string _titel;
+        string _parkhaus;
         string[] _optionen;
         int _auswahlIndex = 0;
 
-        public Menu(string titel, string[] optionen)
+        public Menu(string titel, string parkhaus, string[] optionen)
         {
             _titel = titel;
+            _parkhaus = parkhaus;
             _optionen = optionen;
         }
 
         void OptionenAnzeigen()
         {
-            System.Console.WriteLine(_titel);
+            System.Console.WriteLine(_titel + "    " + _parkhaus);
             for (int i = 0; i < _optionen.Length; i++)
             {
                 string aktuelleOption = _optionen[i];

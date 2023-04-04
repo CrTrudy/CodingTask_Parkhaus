@@ -14,9 +14,11 @@ static class ParkhausBuild
 
         
         etagen = InputZahl("Anzahl Parkdecks: ");
+        //return List<Parkplaetze>
         parkstellen = ParkstellenEingeben(etagen);
+        Manager beobachter = new Manager(parkstellen);
         
-        return new Parkhaus(name, parkstellen, new Beobachter());
+        return new Parkhaus(name, beobachter);
     }
 
     static List<Parkplatz> ParkstellenEingeben(int etagen)
@@ -41,17 +43,22 @@ static class ParkhausBuild
         {
             Random _rand = new Random();
             List<Fahrzeug> fahrzeuge = new List<Fahrzeug>();
+            string[] landkreise = {"SAW", "KLZ", "WOB", "M", "H", "HH", "Wü", "SHG", "D", "BS", "B", "SDL", "F", "DO", "E", "HE", "MD"};
             string kennzeichen;
             FahrzeugType type;
 
             for (int kfz = 0; kfz < parkstellen + 3; kfz++)
             {
-                if(_rand.Next(4) < 2)
+                //50/50 auto oder motorrad
+                if(_rand.Next(4) < 2){
                     type = FahrzeugType.Motorrad;
-                type = FahrzeugType.Auto;
+                }
+                else {
+                    type = FahrzeugType.Auto;
+                }
 
-                Landkreis[] alleKreise = (Landkreis[])Enum.GetValues(typeof(Landkreis));
-                Landkreis zufallsKreis = alleKreise[_rand.Next(0, alleKreise.Length)];
+
+                string zufallsKreis = landkreise[_rand.Next(landkreise.Length)];
 
                 char a = (char) _rand.Next(65,90);
                 char b = (char) _rand.Next(65,90);            
