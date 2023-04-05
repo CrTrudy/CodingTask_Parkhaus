@@ -1,94 +1,103 @@
 class Manager : IManager
 {
-    List<Parkplatz> _alleparkplaetze;
-    public List<Parkplatz> AlleParkplaetze
+    List<Parkplatz> _parkplaetze;
+    public List<Parkplatz> Parkplaetze
     {
-        get { return _alleparkplaetze; }
+        get { return _parkplaetze; }
     }
     public Manager(List<Parkplatz> parkplaetze)
     {
-        _alleparkplaetze = parkplaetze;
+        _parkplaetze = parkplaetze;
     }
 
 
 
 
+    public string SucheKennzeichen(string kennzeichen)
+    {
+        foreach (var parkplatz in _parkplaetze)
+        {
+            if(parkplatz.Kennzeichen == kennzeichen)
+                return parkplatz.PlatzNr;
+        }
+        return "";
+    }
 
 
 
-
-
-
-    public List<Parkplatz> FreieAutoParkplaetze()
+    List<Parkplatz> FreieAutoParkplaetze()
     {
         List<Parkplatz> platz = new List<Parkplatz>();
-        foreach (Parkplatz parkplatz in _alleparkplaetze)
+        foreach (Parkplatz parkplatz in _parkplaetze)
         {
             if (parkplatz.Type.Equals(FahrzeugType.Auto) && parkplatz.Frei)
                 platz.Add(parkplatz);
         }
         return platz;
     }
+
+    public bool FreiAuto()
+    {
+        return FreieAutoParkplaetze().Count > 0;
+    }
     //Freie Motorrad Parkplätze sind auch Auto Parkplätze
     //beginnend mit freien Motorrad Parkplätze
-    public List<Parkplatz> FreieMotorradParkplaetze()
+    List<Parkplatz> FreieMotorradParkplaetze()
     {
         List<Parkplatz> platz = new List<Parkplatz>();
-        foreach (Parkplatz parkplatz in _alleparkplaetze)
+        foreach (Parkplatz parkplatz in _parkplaetze)
         {
             if (parkplatz.Type.Equals(FahrzeugType.Motorrad) && parkplatz.Frei)
                 platz.Add(parkplatz);
         }
         return platz;
     }
-    public Parkplatz? SucheKennzeichen(string kennzeichen)
+
+        public bool FreiMotorrad()
     {
-        foreach (Parkplatz platz in _alleparkplaetze)
-        {
-            if (platz.Fahrzeug is not null)
-                if (kennzeichen == platz.Fahrzeug.Kennzeichen)
-                    return platz;
-        }
-        return null;
+        return FreieMotorradParkplaetze().Count > 0;
     }
-    public void Ausparken(Parkplatz parkplatz)
+
+    public void Ausparken(string platzNr)
     {
-        foreach (Parkplatz stelle in _alleparkplaetze)
+        foreach (var parkplatz in _parkplaetze)
         {
-            if (stelle == parkplatz)
+            if (parkplatz.PlatzNr == platzNr)
             {
-                stelle.Fahrzeug = null;
+                parkplatz.Kennzeichen = "";
+                break;
             }
         }
     }
 
-    public void AutoEinparken(Fahrzeug fahrzeug)
+    public string AutoEinparken(Fahrzeug fahrzeug)
     {
-        if(FreieAutoParkplaetze().Count > 0){
-            foreach (Parkplatz stelle in _alleparkplaetze)
+            foreach (var parkplatz in _parkplaetze)
             {
-                if (stelle == FreieAutoParkplaetze()[0])
+                if (parkplatz == FreieAutoParkplaetze()[0])
                 {
-                    stelle.Fahrzeug = fahrzeug;
+                    parkplatz.Kennzeichen = fahrzeug.Kennzeichen;
+                    return parkplatz.PlatzNr;
                 }
             }
-        }
+        return "";
     }
 
-    public void MotorradEinparken(Fahrzeug fahrzeug)
+    public string MotorradEinparken(Fahrzeug fahrzeug)
     {
-        if(FreieMotorradParkplaetze().Count > 0){
-        foreach (Parkplatz stelle in _alleparkplaetze)
+        foreach (var parkplatz in _parkplaetze)
         {
-            if (stelle == FreieMotorradParkplaetze()[0])
+            if (parkplatz == FreieMotorradParkplaetze()[0])
             {
-                stelle.Fahrzeug = fahrzeug;
+                parkplatz.Kennzeichen = fahrzeug.Kennzeichen;
+                return parkplatz.PlatzNr;
             }
-            if (stelle == FreieAutoParkplaetze()[0])
+            if (parkplatz == FreieAutoParkplaetze()[0])
             {
-                stelle.Fahrzeug = fahrzeug;
+                parkplatz.Kennzeichen = fahrzeug.Kennzeichen;
+                return parkplatz.PlatzNr;
             }
         }
-    }
+        return "";
     }
 }

@@ -31,7 +31,7 @@ public sealed class DasParkhaus {
     void Simulation(){
         Random _rand = new Random();
 
-        List<Fahrzeug> fahrzeuge = ParkhausBuild.FahrzeugeErstellen(_nutzer.Parkhaus.AlleParkplaetze.Count + 5 );
+        List<Fahrzeug> fahrzeuge = ParkhausBuild.FahrzeugeErstellen(_nutzer.Parkhaus.Parkplaetze.Count + 5 );
         do{
             ParkstellenAnzeigen();
             
@@ -40,21 +40,20 @@ public sealed class DasParkhaus {
 
             Thread.Sleep(_rand.Next(6000));                
         }
-        while (true);
+        while (!Console.KeyAvailable);
         Bearbeiten();
     }    
     void ParkstellenAnzeigen(){
         char etage = (char) 65;
         Console.WriteLine(_nutzer.Parkhaus.Info);
-        foreach (var parkplatz in _nutzer.Parkhaus.AlleParkplaetze)
-        {
-            if (parkplatz.DeckName != etage)
-                Console.WriteLine(); 
-            if(parkplatz.Fahrzeug is not null)                   
-                Console.Write($" {parkplatz.DeckName} {parkplatz.PlatzNr} {parkplatz.Fahrzeug.Kennzeichen}    ");
-            Console.Write($" {parkplatz.DeckName} {parkplatz.PlatzNr}             ");
-            etage = parkplatz.DeckName;
-
+        foreach (var parkplatz in _nutzer.Parkhaus.Parkplaetze)
+        {   
+            if(parkplatz.PlatzNr[0] != etage)
+            {
+                System.Console.WriteLine();
+            }                
+            Console.Write($"{parkplatz.PlatzNr} {parkplatz.Kennzeichen}    ");
+            etage = parkplatz.PlatzNr[0];
         }
     }
 }

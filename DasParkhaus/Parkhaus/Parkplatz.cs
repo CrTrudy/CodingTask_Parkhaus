@@ -1,26 +1,19 @@
 ﻿public class Parkplatz
 {
-    char _deckName;
-    public char DeckName
-    {
-        get { return _deckName; }
-    }
 
-    int _platzNr;
-    public int PlatzNr
+    string _platzNr;
+    public string PlatzNr
     {
         get { return _platzNr; }
     }
     public bool Frei {
         get { 
-            if(_fahrzeug is null)
+            if(_kennzeichen is null)
             {
                 return true; 
             }
             return false;
         }
-
-        set { value = !value; }
     }
 
     FahrzeugType _fahrzeugType;
@@ -29,21 +22,16 @@
         get { return _fahrzeugType; }
     }
 
-    Fahrzeug? _fahrzeug;
-    public Fahrzeug? Fahrzeug
+    string _kennzeichen = "";
+    public string Kennzeichen
     {
-        get { return _fahrzeug; }
-        set { _fahrzeug = value; }
+        get { return _kennzeichen; }
+        set { _kennzeichen = value; }
     }
 
-    public Parkplatz(char deckName, int platzNr, FahrzeugType fahrzeugType)
+    public Parkplatz(string platzNr, FahrzeugType fahrzeugType)
     {
-        _deckName = deckName;
         _platzNr = platzNr;
         _fahrzeugType = fahrzeugType;
     }
-
-
-
 }
-

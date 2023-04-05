@@ -1,43 +1,43 @@
 
 static class ParkhausBuild
     {
-    public static  Parkhaus ParkhausAnlegen()
+    public static Parkhaus ParkhausAnlegen()
     {
-        string? name;
-        int etagen;
-        List<Parkplatz> parkstellen;
+        string name;
+        int etagenZahl;
 
-        do{
-            Console.Write("Parkhaus Name: ");
-            name = Console.ReadLine();
-        } while(name is null);
+        Console.Write("Parkhaus Name: ");
+        name = Console.ReadLine();
 
         
-        etagen = InputZahl("Anzahl Parkdecks: ");
-        //return List<Parkplaetze>
-        parkstellen = ParkstellenEingeben(etagen);
-        Manager beobachter = new Manager(parkstellen);
+        etagenZahl = InputZahl("Anzahl Parketagen: ");
+        //return List<Etagen>
+        Manager manager = new Manager(ParkstellenEingeben(etagenZahl));
         
-        return new Parkhaus(name, beobachter);
+        return new Parkhaus(name, manager);
     }
 
-    static List<Parkplatz> ParkstellenEingeben(int etagen)
+    static List<Parkplatz> ParkstellenEingeben(int etagenZahl)
     {
-        List<int> parkplaetzeAuto = new List<int>();
-        List<int> parkplaetzeMotorrad = new List<int>();
+        List<Parkplatz> parkplaetze = new List<Parkplatz>();
         int auto;
         int motorrad;
     
-        for (int etage = 0; etage < etagen; etage++)
+        for (int etage = 0; etage < etagenZahl; etage++)
             {
-                char a = (char) (etage + 65);
-                auto = InputZahl($"Anzahl der Auto Parkstellen auf deck {a}: ");
-                motorrad = InputZahl($"Anzahl der Motorrad Parkstellen auf deck {a}: ");
-
-                parkplaetzeAuto.Add(auto);
-                parkplaetzeMotorrad.Add(motorrad);
+                char etageName = (char) (etage + 65);
+                auto = InputZahl($"Anzahl der Auto Parkstellen auf deck {etageName}: ");
+                for (int nr = 0; nr < auto; nr++)
+                {
+                    parkplaetze.Add(new Parkplatz($"{etageName} {nr + 1}", FahrzeugType.Auto));
+                }
+                motorrad = InputZahl($"Anzahl der Motorrad Parkstellen auf deck {etageName}: ");
+                for (int nr = 0 + auto; nr < motorrad + auto; nr++)
+                {
+                    parkplaetze.Add(new Parkplatz($"{etageName} {nr + 1}", FahrzeugType.Motorrad));
+                }
             }
-        return ParkplatzAnlegen(parkplaetzeAuto, parkplaetzeMotorrad);
+        return parkplaetze;
     }
     public static List<Fahrzeug> FahrzeugeErstellen(int parkstellen)
         {
@@ -70,28 +70,6 @@ static class ParkhausBuild
             }
             return fahrzeuge;
         }
-        static List<Parkplatz> ParkplatzAnlegen(List<int> auto, List<int> motorrad) {
-            List<Parkplatz> Parkplätze = new List<Parkplatz>();
-            Parkplatz parkplatz;
-            for (var etage = 0; etage < auto.Count; etage++)
-            {
-                char deckName = (char) (etage + 65);
-
-                for (int i = 0; i < auto[etage]; i++)
-                {
-                    parkplatz = new Parkplatz(deckName, i, FahrzeugType.Auto);
-                    Parkplätze.Add(parkplatz);
-                }
-                for (int i = 0; i < motorrad[etage]; i++)
-                {
-                    parkplatz = new Parkplatz(deckName, i, FahrzeugType.Motorrad);
-                    Parkplätze.Add(parkplatz);
-                }
-            }
-            return Parkplätze;
-        }
-
-
         //wiederholt readline wenn eingabe nicht int
         static int InputZahl(string frage)
         {

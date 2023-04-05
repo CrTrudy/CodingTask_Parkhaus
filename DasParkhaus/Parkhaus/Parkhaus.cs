@@ -17,20 +17,24 @@ class Parkhaus
      //Manager hat alle funktionen zum verwalten
     IManager _manager;
     //Parkplätze vom IManager abgeholt
-    public List<Parkplatz> AlleParkplaetze 
+    public List<Parkplatz> Parkplaetze 
     { 
-        get { return _manager.AlleParkplaetze; } 
+        get { return _manager.Parkplaetze; } 
     }
 
-    public List<Parkplatz> FreieAutoParkplaetze
+    public bool FreieAutoParkplaetze
     {
-       get { return _manager.FreieAutoParkplaetze(); }
+       get { return _manager.FreiAuto(); }
 
     }
-    public List<Parkplatz> FreieMotorradParkplaetze
+    bool FreieMotorradParkplaetze
     {
-        get { return _manager.FreieMotorradParkplaetze(); }
+        get { return _manager.FreiMotorrad(); }
     }
+
+
+
+
     public Parkhaus(string name,IManager manager)
     {
         _name = name;
@@ -39,24 +43,22 @@ class Parkhaus
     public string Registrierung(Fahrzeug fahrzeug)
     {
         string infotext = "...";
-        Parkplatz? platz = _manager.SucheKennzeichen(fahrzeug.Kennzeichen);
+        string platz = _manager.SucheKennzeichen(fahrzeug.Kennzeichen);
 
-        if (platz is not null)
+        if (platz.Length > 1)
         {
             _manager.Ausparken(platz);
             infotext = $"{fahrzeug.Kennzeichen} hat das Parkhaus verlassen";
         }
-        if (FreieAutoParkplaetze.Count > 0 && fahrzeug.Type.Equals(FahrzeugType.Auto))
+        if (FreieAutoParkplaetze && fahrzeug.Type.Equals(FahrzeugType.Auto))
         {
-            platz = FreieAutoParkplaetze[0];
-            _manager.AutoEinparken(fahrzeug);
-            infotext = $"Bitte nehmen Sie den Platz Nr{platz.PlatzNr} auf Parkdeck {platz.DeckName}";
+            platz = _manager.AutoEinparken(fahrzeug);
+            infotext = $"Bitte nehmen Sie den Platz Nr{platz}";
         }
-        if (FreieAutoParkplaetze.Count > 0 || FreieMotorradParkplaetze.Count > 0 && fahrzeug.Type.Equals(FahrzeugType.Motorrad))
+        if (FreieAutoParkplaetze || FreieMotorradParkplaetze && fahrzeug.Type.Equals(FahrzeugType.Motorrad))
         {
-            platz = FreieAutoParkplaetze[0];
-            _manager.MotorradEinparken(fahrzeug);
-            infotext = $"Bitte nehmen Sie den Platz Nr{platz.PlatzNr} auf Parkdeck {platz.DeckName}";
+            platz = _manager.MotorradEinparken(fahrzeug);
+            infotext = $"Bitte nehmen Sie den Platz Nr{platz}";
         }
         return infotext;
     }

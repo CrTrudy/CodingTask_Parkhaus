@@ -1,8 +1,9 @@
-class Nutzer {
+class Nutzer
+{
     Parkhaus _parkhaus;
 
-    
-    public Parkhaus Parkhaus 
+
+    public Parkhaus Parkhaus
     {
         get { return _parkhaus; }
     }
@@ -10,7 +11,7 @@ class Nutzer {
 
     public Nutzer(Parkhaus parkhaus)
     {
-    _parkhaus = parkhaus;
+        _parkhaus = parkhaus;
     }
 }
 
