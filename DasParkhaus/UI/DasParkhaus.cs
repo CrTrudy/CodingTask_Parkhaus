@@ -56,5 +56,6 @@ public sealed class DasParkhaus {
             Console.Write($"{parkplatz.PlatzNr} {parkplatz.Kennzeichen}    ");
             etage = parkplatz.PlatzNr[0];
         }
+        System.Console.WriteLine();
     }
 }
