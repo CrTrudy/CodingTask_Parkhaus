@@ -28,6 +28,7 @@ public sealed class DasParkhaus {
         
     }
 
+    //mit beliebiger taste beenden
     void Simulation(){
         Random _rand = new Random();
 

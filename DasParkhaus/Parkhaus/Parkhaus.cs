@@ -45,7 +45,7 @@ class Parkhaus
         string infotext = "...";
         string platz = _manager.SucheKennzeichen(fahrzeug.Kennzeichen);
 
-        if (platz.Length > 1)
+        if (platz != "")
         {
             _manager.Ausparken(platz);
             infotext = $"{fahrzeug.Kennzeichen} hat das Parkhaus verlassen";

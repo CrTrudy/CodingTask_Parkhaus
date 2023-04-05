@@ -22,7 +22,7 @@
         get { return _fahrzeugType; }
     }
 
-    string _kennzeichen = "";
+    string _kennzeichen;
     public string Kennzeichen
     {
         get { return _kennzeichen; }

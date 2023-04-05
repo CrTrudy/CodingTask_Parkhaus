@@ -28,7 +28,7 @@ class Manager : IManager
     List<Parkplatz> FreieAutoParkplaetze()
     {
         List<Parkplatz> platz = new List<Parkplatz>();
-        foreach (Parkplatz parkplatz in _parkplaetze)
+        foreach (var parkplatz in _parkplaetze)
         {
             if (parkplatz.Type.Equals(FahrzeugType.Auto) && parkplatz.Frei)
                 platz.Add(parkplatz);
@@ -40,12 +40,13 @@ class Manager : IManager
     {
         return FreieAutoParkplaetze().Count > 0;
     }
+
     //Freie Motorrad Parkplätze sind auch Auto Parkplätze
     //beginnend mit freien Motorrad Parkplätze
     List<Parkplatz> FreieMotorradParkplaetze()
     {
         List<Parkplatz> platz = new List<Parkplatz>();
-        foreach (Parkplatz parkplatz in _parkplaetze)
+        foreach (var parkplatz in _parkplaetze)
         {
             if (parkplatz.Type.Equals(FahrzeugType.Motorrad) && parkplatz.Frei)
                 platz.Add(parkplatz);
@@ -53,7 +54,7 @@ class Manager : IManager
         return platz;
     }
 
-        public bool FreiMotorrad()
+    public bool FreiMotorrad()
     {
         return FreieMotorradParkplaetze().Count > 0;
     }
@@ -74,7 +75,7 @@ class Manager : IManager
     {
             foreach (var parkplatz in _parkplaetze)
             {
-                if (parkplatz == FreieAutoParkplaetze()[0])
+                if (parkplatz.PlatzNr == FreieAutoParkplaetze()[0].PlatzNr)
                 {
                     parkplatz.Kennzeichen = fahrzeug.Kennzeichen;
                     return parkplatz.PlatzNr;
@@ -87,12 +88,12 @@ class Manager : IManager
     {
         foreach (var parkplatz in _parkplaetze)
         {
-            if (parkplatz == FreieMotorradParkplaetze()[0])
+            if (parkplatz.PlatzNr == FreieMotorradParkplaetze()[0].PlatzNr)
             {
                 parkplatz.Kennzeichen = fahrzeug.Kennzeichen;
                 return parkplatz.PlatzNr;
             }
-            if (parkplatz == FreieAutoParkplaetze()[0])
+            if (parkplatz.PlatzNr == FreieAutoParkplaetze()[0].PlatzNr)
             {
                 parkplatz.Kennzeichen = fahrzeug.Kennzeichen;
                 return parkplatz.PlatzNr;
