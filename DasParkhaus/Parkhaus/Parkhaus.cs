@@ -42,24 +42,6 @@ class Parkhaus
     }
     public string Registrierung(Fahrzeug fahrzeug)
     {
-        string infotext = "...";
-        string platz = _manager.SucheKennzeichen(fahrzeug.Kennzeichen);
-
-        if (platz != "")
-        {
-            _manager.Ausparken(platz);
-            infotext = $"{fahrzeug.Kennzeichen} hat das Parkhaus verlassen";
-        }
-        if (FreieAutoParkplaetze && fahrzeug.Type.Equals(FahrzeugType.Auto))
-        {
-            platz = _manager.AutoEinparken(fahrzeug);
-            infotext = $"Bitte nehmen Sie den Platz Nr{platz}";
-        }
-        if (FreieAutoParkplaetze || FreieMotorradParkplaetze && fahrzeug.Type.Equals(FahrzeugType.Motorrad))
-        {
-            platz = _manager.MotorradEinparken(fahrzeug);
-            infotext = $"Bitte nehmen Sie den Platz Nr{platz}";
-        }
-        return infotext;
+        return _manager.Durchgang(fahrzeug);
     }
 }

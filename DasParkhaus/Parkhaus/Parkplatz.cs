@@ -8,14 +8,14 @@
     }
     public bool Frei {
         get { 
-            if(_kennzeichen is null)
+            if(_kennzeichen is null || _kennzeichen == "")
             {
                 return true; 
             }
             return false;
         }
     }
-
+    
     FahrzeugType _fahrzeugType;
     public FahrzeugType Type
     {

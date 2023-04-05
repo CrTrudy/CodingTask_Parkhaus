@@ -10,8 +10,40 @@ class Manager : IManager
         _parkplaetze = parkplaetze;
     }
 
+    public string Durchgang(Fahrzeug fahrzeug)
+    {
+        string platzNr = SucheKennzeichen(fahrzeug.Kennzeichen);
 
+        if (platzNr.Length > 2)
+        {
+            Ausparken(platzNr);
+            return $"{fahrzeug.Kennzeichen} hat das Parkhaus verlassen";
+        }
+        if (!FreiAuto() || !FreiMotorrad())
+        {
+            return "Das Parkhaus ist voll belegt";
+        }
+        if (fahrzeug.Type.Equals(FahrzeugType.Auto) && FreiAuto())
+        {
+            return $"Bitte nehmen Sie platz NR: {AutoEinparken(fahrzeug)}";
+        }
+        if (fahrzeug.Type.Equals(FahrzeugType.Motorrad) && (FreiMotorrad() || FreiAuto()))
+        {
+            return $"Bitte nehmen Sie den Platz Nr: {MotorradEinparken(fahrzeug)}";
+        }
+        return "";
+    }
 
+    void Ausparken(string platzNr)
+    {
+        for (int parkplatz = 0; parkplatz < _parkplaetze.Count; parkplatz++)
+        {
+            if (_parkplaetze[parkplatz].PlatzNr == platzNr)
+            {
+                _parkplaetze[parkplatz].Kennzeichen = "";
+            }
+        }
+    }
 
     public string SucheKennzeichen(string kennzeichen)
     {
@@ -59,19 +91,9 @@ class Manager : IManager
         return FreieMotorradParkplaetze().Count > 0;
     }
 
-    public void Ausparken(string platzNr)
-    {
-        foreach (var parkplatz in _parkplaetze)
-        {
-            if (parkplatz.PlatzNr == platzNr)
-            {
-                parkplatz.Kennzeichen = "";
-                break;
-            }
-        }
-    }
 
-    public string AutoEinparken(Fahrzeug fahrzeug)
+
+    string AutoEinparken(Fahrzeug fahrzeug)
     {
             foreach (var parkplatz in _parkplaetze)
             {
@@ -84,7 +106,7 @@ class Manager : IManager
         return "";
     }
 
-    public string MotorradEinparken(Fahrzeug fahrzeug)
+    string MotorradEinparken(Fahrzeug fahrzeug)
     {
         foreach (var parkplatz in _parkplaetze)
         {
